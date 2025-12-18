@@ -10,53 +10,55 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
-body{
+html,body{
+  width:100%;
+  overflow-x:hidden;
   font-family:'Montserrat',sans-serif;
+}
+
+body{
   background:
-    linear-gradient(rgba(246,242,238,.85),rgba(246,242,238,.85)),
+    linear-gradient(rgba(246,242,238,.88),rgba(246,242,238,.88)),
     url("img/fondo2.jpg");
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
-  overflow:hidden;
 }
 
-/* ===== SLIDER ===== */
+/* ---------- SLIDER ---------- */
+.slider-wrapper{
+  width:100vw;
+  overflow:hidden;
+  position:relative;
+}
+
 .slider{
   display:flex;
   width:300vw;
-  height:100vh;
   transition:transform .6s ease-in-out;
 }
 
-/* ===== SECTIONS (FIX MOBILE) ===== */
+/* ---------- SLIDES ---------- */
 section{
+  flex:0 0 100vw;
   width:100vw;
-  min-height:100svh;
-  padding:40px 25px 80px;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  text-align:center;
+  padding:90px 20px 130px;
 }
 
-@media(min-width:768px){
-  section{
-    min-height:100vh;
-    align-items:center;
-    padding:40px 25px;
-  }
-}
-
-/* ===== CARD ===== */
+/* ---------- CARD ---------- */
 .card{
   background:#fff;
   max-width:420px;
   width:100%;
-  padding:35px 25px;
+  padding:34px 24px;
   border-radius:18px;
   box-shadow:0 18px 40px rgba(0,0,0,.15);
   position:relative;
+  text-align:center;
 }
 
 .card::before{
@@ -68,26 +70,28 @@ section{
   pointer-events:none;
 }
 
-/* ===== PHOTO ===== */
+/* ---------- PHOTO (ÚNICO CAMBIO) ---------- */
 .photo{
   width:100%;
   height:250px;
   background:url("img/TCP6006.JPG") center/cover no-repeat;
   border-radius:12px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
-/* ===== TEXT ===== */
-h1,h2{font-family:'Playfair Display',serif;margin-bottom:12px}
-h1{font-size:2.2rem}
-h2{font-size:1.6rem;color:#795226}
-
+/* ---------- TEXT ---------- */
 .subtitle{
-  font-size:.9rem;
+  font-size:.85rem;
   letter-spacing:.25em;
   text-transform:uppercase;
   color:#b79b7a;
   margin-bottom:10px;
+}
+
+.names{
+  font-family:'Great Vibes',cursive;
+  font-size:2.2rem;
+  color:#795226;
 }
 
 .divider{
@@ -99,21 +103,40 @@ h2{font-size:1.6rem;color:#795226}
 
 .romantic{
   font-family:'Great Vibes',cursive;
-  font-size:1.2rem;
+  font-size:1.15rem;
   color:#b79b7a;
+  margin-top:10px;
 }
 
-.names{
-  font-family:'Great Vibes',cursive;
-  font-size:2rem;
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
   color:#795226;
+  margin-bottom:12px;
 }
 
-/* ===== COUNTDOWN ===== */
+.text{
+  font-size:.95rem;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:18px;
+  padding:12px 26px;
+  border-radius:30px;
+  background:#b79b7a;
+  color:#fff;
+  text-decoration:none;
+  font-size:.9rem;
+}
+
+/* ---------- COUNTDOWN ---------- */
 .countdown{
   display:flex;
   justify-content:center;
   gap:12px;
+  margin-top:15px;
 }
 
 .time{
@@ -123,7 +146,7 @@ h2{font-size:1.6rem;color:#795226}
   font-size:.8rem;
 }
 
-/* ===== DOTS ===== */
+/* ---------- NAV DOTS ---------- */
 .nav{
   position:fixed;
   bottom:20px;
@@ -131,6 +154,7 @@ h2{font-size:1.6rem;color:#795226}
   transform:translateX(-50%);
   display:flex;
   gap:10px;
+  z-index:10;
 }
 
 .dot{
@@ -140,39 +164,39 @@ h2{font-size:1.6rem;color:#795226}
   border-radius:50%;
   opacity:.4;
 }
+
 .dot.active{opacity:1}
 
-/* ===== ARROWS ===== */
+/* ---------- ARROWS ---------- */
 .arrows{
   position:fixed;
-  top:50%;
+  bottom:70px;
   width:100%;
   display:flex;
   justify-content:space-between;
-  padding:0 15px;
-  pointer-events:none;
+  padding:0 25px;
+  z-index:10;
 }
 
 .arrows button{
-  pointer-events:auto;
-  background:rgba(255,255,255,.85);
+  background:rgba(255,255,255,.9);
   border:none;
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   font-size:22px;
   color:#b79b7a;
   box-shadow:0 6px 18px rgba(0,0,0,.15);
 }
 
-/* ===== LANG ===== */
+/* ---------- LANGUAGE ---------- */
 .lang-switch{
   position:fixed;
   top:20px;
   left:20px;
-  z-index:999;
   display:flex;
   gap:6px;
+  z-index:20;
 }
 
 .lang-switch button{
@@ -188,27 +212,27 @@ h2{font-size:1.6rem;color:#795226}
   color:#fff;
 }
 
-/* ===== MUSIC ===== */
+/* ---------- MUSIC ---------- */
 #musicBtn{
   position:fixed;
   top:20px;
   right:20px;
-  z-index:999;
   background:#b79b7a;
   color:#fff;
   border:none;
   border-radius:50%;
-  width:48px;
-  height:48px;
+  width:46px;
+  height:46px;
   font-size:18px;
+  z-index:20;
 }
 
 #volumeControl{
   position:fixed;
-  top:78px;
+  top:75px;
   right:22px;
-  z-index:999;
   width:80px;
+  z-index:20;
 }
 </style>
 </head>
@@ -223,20 +247,21 @@ h2{font-size:1.6rem;color:#795226}
 
 <!-- MUSICA -->
 <audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
 </audio>
 
 <button id="musicBtn">♪</button>
 <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.5">
 
+<!-- SLIDER -->
+<div class="slider-wrapper">
 <div class="slider" id="slider">
 
-<!-- SLIDE 1 -->
 <section>
   <div class="card">
     <div class="photo"></div>
-    <div class="subtitle" data-es="Nos casamos" data-en="We are getting married">Nos casamos</div>
-    <h1 class="names">Marcus & Laura</h1>
+    <div class="subtitle" data-es="Nos casamos" data-en="We're getting married">Nos casamos</div>
+    <div class="names">Marcus & Laura</div>
     <div class="divider"></div>
     <p class="romantic" data-es="El amor fue nuestro idioma en común" data-en="Love became our common language">
       El amor fue nuestro idioma en común
@@ -247,7 +272,6 @@ h2{font-size:1.6rem;color:#795226}
   </div>
 </section>
 
-<!-- SLIDE 2 -->
 <section>
   <div class="card">
     <h2 data-es="Faltan" data-en="Countdown">Faltan</h2>
@@ -255,16 +279,18 @@ h2{font-size:1.6rem;color:#795226}
   </div>
 </section>
 
-<!-- SLIDE 3 -->
 <section>
   <div class="card">
     <h2 data-es="Ceremonia civil" data-en="Civil ceremony">Ceremonia civil</h2>
     <div class="divider"></div>
-    <p>Calle Corregidora 46<br>Atlaltahucan, Morelos</p>
-    <p>2:30 p.m.</p>
+    <p class="text">Calle Corregidora 46<br>Atlaltahucan, Morelos</p>
+    <p class="text">2:30 p.m.</p>
+    <a class="btn" href="https://maps.app.goo.gl/wvwoCVHcf98MsGAEA" target="_blank"
+       data-es="Ver ubicación" data-en="View location">Ver ubicación</a>
   </div>
 </section>
 
+</div>
 </div>
 
 <!-- DOTS -->
@@ -284,48 +310,55 @@ h2{font-size:1.6rem;color:#795226}
 let index=0;
 const slider=document.getElementById('slider');
 const dots=document.querySelectorAll('.dot');
-let startX=0;
 
 function update(){
   slider.style.transform=`translateX(-${index*100}vw)`;
   dots.forEach((d,i)=>d.classList.toggle('active',i===index));
 }
 
+/* TOUCH */
+let startX=0;
 document.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
 document.addEventListener('touchend',e=>{
   const diff=startX-e.changedTouches[0].clientX;
-  if(diff>50&&index<2)index++;
-  if(diff<-50&&index>0)index--;
+  if(diff>50 && index<2) index++;
+  if(diff<-50 && index>0) index--;
   update();
 });
 
-document.getElementById('prev').onclick=()=>{if(index>0)index--;update();}
-document.getElementById('next').onclick=()=>{if(index<2)index++;update();}
+/* ARROWS */
+document.getElementById('prev').onclick=()=>{if(index>0){index--;update();}};
+document.getElementById('next').onclick=()=>{if(index<2){index++;update();}};
 
+/* MUSIC */
 const music=document.getElementById('bgMusic');
 const btn=document.getElementById('musicBtn');
 const volume=document.getElementById('volumeControl');
 let playing=false;
 music.volume=.5;
 
-btn.onclick=()=>{playing?music.pause():music.play();playing=!playing;}
+btn.onclick=()=>{
+  playing?music.pause():music.play();
+  playing=!playing;
+};
 volume.oninput=()=>music.volume=volume.value;
 
-const langBtns=document.querySelectorAll('.lang-switch button');
-const texts=document.querySelectorAll('[data-es]');
-langBtns.forEach(b=>{
+/* LANG */
+document.querySelectorAll('.lang-switch button').forEach(b=>{
   b.onclick=()=>{
-    langBtns.forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.lang-switch button').forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
-    texts.forEach(t=>t.textContent=t.dataset[b.dataset.lang]);
-  }
+    document.querySelectorAll('[data-es]').forEach(t=>{
+      t.textContent=t.dataset[b.dataset.lang];
+    });
+  };
 });
 
+/* COUNTDOWN */
 const target=new Date('2026-01-10T17:00:00');
 const cd=document.getElementById('countdown');
 setInterval(()=>{
-  const now=new Date();
-  const diff=target-now;
+  const diff=target-new Date();
   const d=Math.floor(diff/86400000);
   const h=Math.floor(diff/3600000)%24;
   const m=Math.floor(diff/60000)%60;
