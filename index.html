@@ -113,7 +113,7 @@ section:nth-child(3){
 
 .romantic{
   font-family:'Great Vibes',cursive;
-  font-size:1.15rem;
+  font-size:1.8rem;
   color:#b79b7a;
   margin-top:10px;
 }
@@ -244,6 +244,38 @@ h2{
   width:80px;
   z-index:20;
 }
+
+/* ---------- VOLUME SLIDER COLOR ---------- */
+input[type="range"]{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 4px;
+  background: #d8c7b2; /* línea */
+  border-radius: 5px;
+  outline: none;
+}
+
+/* CIRCULITO (thumb) */
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #b79b7a; /* color del circulo */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb{
+  width: 16px;
+  height: 16px;
+  background: #b79b7a;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 </style>
 </head>
 
