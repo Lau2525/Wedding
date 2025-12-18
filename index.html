@@ -34,7 +34,7 @@ body{
 
 .slider{
   display:flex;
-  width:300vw;
+  width:400vw;
   transition:transform .6s ease-in-out;
 }
 
@@ -100,7 +100,7 @@ section:nth-child(3){
 
 .names{
   font-family:'Great Vibes',cursive;
-  font-size:2.2rem;
+  font-size:2.1rem;
   color:#795226;
 }
 
@@ -276,6 +276,17 @@ input[type="range"]::-moz-range-thumb{
   cursor: pointer;
 }
 
+/*Lovely-text*/
+.lovely-text{
+  font-family:'Great Vibes',cursive;
+  font-size:1.4rem;
+  color:#b79b7a;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 </style>
 </head>
 
@@ -303,6 +314,7 @@ input[type="range"]::-moz-range-thumb{
   <div class="card">
     <div class="photo"></div>
     <div class="subtitle" data-es="Nos casamos" data-en="We're getting married">Nos casamos</div>
+     <div class="divider"></div>
     <div class="names">Marcus & Laura</div>
     <div class="divider"></div>
     <p class="romantic" data-es="El amor se volvió nuestro idioma en común" data-en="Love became our common language">
@@ -322,10 +334,52 @@ input[type="range"]::-moz-range-thumb{
 </section>
 
 <section>
+<div class="card">
+
+  <!-- PLANTILLAS OCULTAS -->
+  <template id="romantic-es">
+    Con el corazón lleno de gratitud,<br>
+    agradecemos a Dios, a nuestros padres y a la vida<br>
+    por habernos permitido encontrarnos.<br><br>
+
+    Desde lugares distantes, nuestros caminos se cruzaron<br>
+    y hoy decidimos caminar juntos,<br>
+    celebrando esta unión como una bendición.<br><br>
+
+    <strong>
+      Con mucha alegría, le invitamos a celebrar con nosotros<br>
+      este momento tan especial.
+    </strong>
+  </template>
+
+  <template id="romantic-en">
+    With hearts full of gratitude,<br>
+    we thank God, our parents, and life<br>
+    for allowing us to find each other.<br><br>
+
+    From distant places, our paths crossed<br>
+    and today we choose to walk together,<br>
+    celebrating this union as a blessing.<br><br>
+
+    <strong>
+      With great joy, we invite you to celebrate with us<br>
+      this very special moment.
+    </strong>
+  </template>
+
+  <!-- TEXTO VISIBLE -->
+  <p class="lovely-text" id="romanticText"></p>
+
+</div>
+
+</section>
+
+
+<section>
   <div class="card">
     <h2 data-es="Ceremonia civil" data-en="Civil ceremony">Ceremonia civil</h2>
     <div class="divider"></div>
-    <p class="text">Calle Corregidora 46<br>Atlaltahucan, Morelos</p>
+    <p class="text">Calle Corregidora 46<br>Atlatlahucan, Morelos</p>
     <p class="text">2:30 p.m.</p>
     <a class="btn" href="https://maps.app.goo.gl/wvwoCVHcf98MsGAEA" target="_blank"
        data-es="Ver ubicación" data-en="View location">Ver ubicación</a>
@@ -338,6 +392,7 @@ input[type="range"]::-moz-range-thumb{
 <!-- DOTS -->
 <div class="nav">
   <div class="dot active"></div>
+  <div class="dot"></div>
   <div class="dot"></div>
   <div class="dot"></div>
 </div>
@@ -363,14 +418,14 @@ let startX=0;
 document.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
 document.addEventListener('touchend',e=>{
   const diff=startX-e.changedTouches[0].clientX;
-  if(diff>50 && index<2) index++;
+  if(diff>50 && index<3) index++;
   if(diff<-50 && index>0) index--;
   update();
 });
 
 /* ARROWS */
 document.getElementById('prev').onclick=()=>{if(index>0){index--;update();}};
-document.getElementById('next').onclick=()=>{if(index<2){index++;update();}};
+document.getElementById('next').onclick=()=>{if(index<3){index++;update();}};
 
 /* MUSIC */
 const music=document.getElementById('bgMusic');
@@ -386,7 +441,7 @@ btn.onclick=()=>{
 volume.oninput=()=>music.volume=volume.value;
 
 /* LANG */
-document.querySelectorAll('.lang-switch button').forEach(b=>{
+/*document.querySelectorAll('.lang-switch button').forEach(b=>{
   b.onclick=()=>{
     document.querySelectorAll('.lang-switch button').forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
@@ -394,7 +449,29 @@ document.querySelectorAll('.lang-switch button').forEach(b=>{
       t.textContent=t.dataset[b.dataset.lang];
     });
   };
+});*/
+
+/* LANG */
+const romanticText = document.getElementById('romanticText');
+const tplES = document.getElementById('romantic-es');
+const tplEN = document.getElementById('romantic-en');
+
+document.querySelectorAll('.lang-switch button').forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll('.lang-switch button')
+      .forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+
+    romanticText.innerHTML =
+      b.dataset.lang === 'en'
+        ? tplEN.innerHTML
+        : tplES.innerHTML;
+  };
 });
+
+/* idioma inicial */
+romanticText.innerHTML = tplES.innerHTML;
+
 
 /* COUNTDOWN */
 const target=new Date('2026-01-10T17:00:00');
