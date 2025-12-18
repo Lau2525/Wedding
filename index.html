@@ -21,34 +21,42 @@ body{
   overflow:hidden;
 }
 
-/* SLIDER */
+/* ===== SLIDER ===== */
 .slider{
   display:flex;
   width:500vw;
-  height:100vh;
+  height:100%;
   transition:transform .6s ease-in-out;
 }
 
-/* SLIDES */
+/* ===== SECTIONS (FIX MOBILE) ===== */
 section{
   width:100vw;
-  height:100vh;
+  min-height:100svh;               /* CLAVE MOBILE */
+  padding:40px 25px 90px;
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:20px;
+  align-items:flex-start;          /* evita que nade */
+  text-align:center;
 }
 
-/* CARD */
+@media(min-width:768px){
+  section{
+    min-height:100vh;
+    align-items:center;
+    padding:40px 25px;
+  }
+}
+
+/* ===== CARD ===== */
 .card{
   background:#fff;
   max-width:420px;
   width:100%;
-  padding:32px 24px;
+  padding:35px 25px;
   border-radius:18px;
   box-shadow:0 18px 40px rgba(0,0,0,.15);
   position:relative;
-  text-align:center;
 }
 
 .card::before{
@@ -60,63 +68,56 @@ section{
   pointer-events:none;
 }
 
-/* FOTO */
+/* ===== PHOTO ===== */
 .photo{
   width:100%;
   height:250px;
-  background:url("img/TCP6006.JPG") center/cover no-repeat;
+  background:url("img/_TCP6006.JPG") center/cover no-repeat;
   border-radius:12px;
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 
-/* TEXTOS */
+/* ===== TEXT ===== */
 h1,h2{
   font-family:'Playfair Display',serif;
   margin-bottom:12px;
 }
 
-h1{font-size:2.1rem}
-h2{font-size:1.5rem;color:#795226}
-
 .subtitle{
-  font-size:.85rem;
+  font-size:.9rem;
   letter-spacing:.25em;
   text-transform:uppercase;
   color:#b79b7a;
-  margin-bottom:8px;
+}
+
+.names{
+  font-family:'Great Vibes',cursive;
+  font-size:2.1rem;
+  color:#795226;
+}
+
+.romantic{
+  font-family:'Great Vibes',cursive;
+  font-size:1.2rem;
+  color:#b79b7a;
+  margin-top:10px;
 }
 
 .divider{
   width:70px;
   height:1px;
   background:#d8c7b2;
-  margin:16px auto;
+  margin:18px auto;
 }
 
-.text{
-  font-size:.95rem;
-  line-height:1.6;
-}
+.text{font-size:.95rem;line-height:1.6}
 
-.date{
-  font-size:1rem;
-  margin-top:8px;
-  font-weight:500;
-}
-
-/* FRASE ROMÁNTICA (PRIMER SLIDE) */
-.romantic{
-  font-family:'Great Vibes',cursive;
-  font-size:1.6rem;
-  color:#b79b7a;
-  margin-top:10px;
-}
-
-/* COUNTDOWN */
+/* ===== COUNTDOWN ===== */
 .countdown{
   display:flex;
   justify-content:center;
-  gap:10px;
+  gap:12px;
+  margin-top:15px;
 }
 
 .time{
@@ -126,14 +127,15 @@ h2{font-size:1.5rem;color:#795226}
   font-size:.8rem;
 }
 
-/* DOTS */
+/* ===== NAV DOTS ===== */
 .nav{
   position:fixed;
-  bottom:18px;
+  bottom:20px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
   gap:10px;
+  z-index:99;
 }
 
 .dot{
@@ -143,9 +145,10 @@ h2{font-size:1.5rem;color:#795226}
   border-radius:50%;
   opacity:.4;
 }
+
 .dot.active{opacity:1}
 
-/* FLECHAS */
+/* ===== ARROWS (DESKTOP + MOBILE) ===== */
 .arrows{
   position:fixed;
   top:50%;
@@ -154,6 +157,7 @@ h2{font-size:1.5rem;color:#795226}
   justify-content:space-between;
   padding:0 15px;
   pointer-events:none;
+  z-index:99;
 }
 
 .arrows button{
@@ -168,7 +172,7 @@ h2{font-size:1.5rem;color:#795226}
   box-shadow:0 6px 18px rgba(0,0,0,.15);
 }
 
-/* IDIOMAS */
+/* ===== LANGUAGE ===== */
 .lang-switch{
   position:fixed;
   top:20px;
@@ -191,7 +195,7 @@ h2{font-size:1.5rem;color:#795226}
   color:#fff;
 }
 
-/* MÚSICA */
+/* ===== MUSIC ===== */
 #musicBtn{
   position:fixed;
   top:20px;
@@ -211,18 +215,20 @@ h2{font-size:1.5rem;color:#795226}
   top:78px;
   right:22px;
   z-index:999;
-  width:90px;
+  width:80px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- IDIOMA -->
 <div class="lang-switch">
   <button data-lang="es" class="active">ES</button>
   <button data-lang="en">EN</button>
 </div>
 
+<!-- MUSICA -->
 <audio id="bgMusic" loop>
   <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
 </audio>
@@ -230,35 +236,37 @@ h2{font-size:1.5rem;color:#795226}
 <button id="musicBtn">♪</button>
 <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.5">
 
+<!-- SLIDER -->
 <div class="slider" id="slider">
 
-<!-- SLIDE 1 -->
 <section>
   <div class="card">
     <div class="photo"></div>
-    <div class="subtitle">Nos casamos</div>
-    <h1>Marcus & Laura</h1>
+    <div class="subtitle" data-es="Nos casamos" data-en="We are getting married">Nos casamos</div>
+    <h1 class="names">Marcus & Laura</h1>
     <div class="divider"></div>
-    <p class="romantic">El amor fue nuestro idioma en común</p>
-    <p class="romantic">10 · Enero · 2026</p>
+    <p class="romantic" data-es="El amor fue nuestro idioma en común" data-en="Love became our common language">
+      El amor fue nuestro idioma en común
+    </p>
+    <p class="romantic" data-es="10 · Enero · 2026" data-en="10 · January · 2026">
+      10 · Enero · 2026
+    </p>
   </div>
 </section>
 
-<!-- SLIDE 2 -->
 <section>
   <div class="card">
-    <h2>Faltan</h2>
+    <h2 data-es="Faltan" data-en="Countdown">Faltan</h2>
     <div class="countdown" id="countdown"></div>
   </div>
 </section>
 
-<!-- SLIDE 3 -->
 <section>
   <div class="card">
-    <h2>Ceremonia civil</h2>
+    <h2 data-es="Ceremonia civil" data-en="Civil ceremony">Ceremonia civil</h2>
     <div class="divider"></div>
-    <p class="text">Calle Corregidora 46<br>Atlaltlahucan, Morelos</p>
-    <p class="date">2:30 p.m.</p>
+    <p class="text">Calle Corregidora 46<br>Atlaltahucan, Morelos</p>
+    <p class="text">2:30 p.m.</p>
   </div>
 </section>
 
@@ -279,13 +287,13 @@ h2{font-size:1.5rem;color:#795226}
 let index=0;
 const slider=document.getElementById('slider');
 const dots=document.querySelectorAll('.dot');
+let startX=0;
 
 function update(){
   slider.style.transform=`translateX(-${index*100}vw)`;
   dots.forEach((d,i)=>d.classList.toggle('active',i===index));
 }
 
-let startX=0;
 document.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
 document.addEventListener('touchend',e=>{
   const diff=startX-e.changedTouches[0].clientX;
@@ -294,29 +302,43 @@ document.addEventListener('touchend',e=>{
   update();
 });
 
-prev.onclick=()=>{if(index>0)index--;update();}
-next.onclick=()=>{if(index<2)index++;update();}
+document.getElementById('prev').onclick=()=>{if(index>0)index--;update();}
+document.getElementById('next').onclick=()=>{if(index<2)index++;update();}
 
-/* MÚSICA */
+/* MUSICA */
 const music=document.getElementById('bgMusic');
 const btn=document.getElementById('musicBtn');
 const volume=document.getElementById('volumeControl');
+let playing=false;
 music.volume=.5;
 
 btn.onclick=()=>{
-  if(music.paused){music.play()}else{music.pause()}
+  playing?music.pause():music.play();
+  playing=!playing;
 };
 volume.oninput=()=>music.volume=volume.value;
 
+/* IDIOMAS */
+document.querySelectorAll('.lang-switch button').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.lang-switch button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.querySelectorAll('[data-es]').forEach(t=>t.textContent=t.dataset[b.dataset.lang]);
+  }
+});
+
 /* COUNTDOWN */
-const target=new Date('2026-01-10T14:30:00');
-const cd=document.getElementById('countdown');
+const target=new Date('2026-01-10T17:00:00');
 setInterval(()=>{
-  const diff=target-new Date();
+  const now=new Date();
+  const diff=target-now;
   const d=Math.floor(diff/86400000);
   const h=Math.floor(diff/3600000)%24;
   const m=Math.floor(diff/60000)%60;
-  cd.innerHTML=`<div class="time">${d}<br>Días</div><div class="time">${h}<br>Hrs</div><div class="time">${m}<br>Min</div>`;
+  document.getElementById('countdown').innerHTML=
+    `<div class="time">${d}<br>Días</div>
+     <div class="time">${h}<br>Hrs</div>
+     <div class="time">${m}<br>Min</div>`;
 },1000);
 </script>
 
