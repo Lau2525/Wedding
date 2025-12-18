@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Digital</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Invitación Digital de Boda</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
-body{
+html,body{
+  width:100%;
+  overflow-x:hidden;
   font-family:'Montserrat',sans-serif;
+}
+
+body{
   background:
-    linear-gradient(rgba(246,242,238,.85),rgba(246,242,238,.85)),
+    linear-gradient(rgba(246,242,238,.88),rgba(246,242,238,.88)),
     url("img/fondo2.jpg");
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
-  overflow:hidden;
 }
 
-/* SLIDER */
+/* ---------- SLIDER ---------- */
+.slider-wrapper{
+  width:100vw;
+  overflow:hidden;
+  position:relative;
+}
+
 .slider{
   display:flex;
   width:300vw;
-  transition:transform .6s ease;
+  transition:transform .6s ease-in-out;
 }
 
-/* SECTIONS — MOBILE FIRST */
+/* ---------- SLIDES ---------- */
 section{
+  flex:0 0 100vw;
   width:100vw;
-  min-height:100svh;
-  padding:120px 20px 80px;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:flex-start;
+  padding:90px 20px 130px;
 }
 
-/* DESKTOP */
-@media(min-width:768px){
-  section{
-    height:100vh;
-    padding:40px 25px;
-    align-items:center;
-  }
-}
-
-/* CARD */
+/* ---------- CARD ---------- */
 .card{
   background:#fff;
   max-width:420px;
   width:100%;
-  padding:35px 25px;
+  padding:34px 24px;
   border-radius:18px;
   box-shadow:0 18px 40px rgba(0,0,0,.15);
   position:relative;
+  text-align:center;
 }
 
 .card::before{
@@ -67,18 +70,18 @@ section{
   pointer-events:none;
 }
 
-/* PHOTO */
+/* ---------- PHOTO (ÚNICO CAMBIO) ---------- */
 .photo{
   width:100%;
   height:250px;
   background:url("img/TCP6006.JPG") center/cover no-repeat;
   border-radius:12px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
-/* TEXT */
+/* ---------- TEXT ---------- */
 .subtitle{
-  font-size:.9rem;
+  font-size:.85rem;
   letter-spacing:.25em;
   text-transform:uppercase;
   color:#b79b7a;
@@ -87,15 +90,8 @@ section{
 
 .names{
   font-family:'Great Vibes',cursive;
-  font-size:2.1rem;
+  font-size:2.2rem;
   color:#795226;
-}
-
-.romantic{
-  font-family:'Great Vibes',cursive;
-  font-size:1.25rem;
-  color:#b79b7a;
-  margin-top:10px;
 }
 
 .divider{
@@ -105,11 +101,37 @@ section{
   margin:18px auto;
 }
 
-h2{
-  font-family:'Playfair Display',serif;
-  color:#795226;
+.romantic{
+  font-family:'Great Vibes',cursive;
+  font-size:1.15rem;
+  color:#b79b7a;
+  margin-top:10px;
 }
 
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  color:#795226;
+  margin-bottom:12px;
+}
+
+.text{
+  font-size:.95rem;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:18px;
+  padding:12px 26px;
+  border-radius:30px;
+  background:#b79b7a;
+  color:#fff;
+  text-decoration:none;
+  font-size:.9rem;
+}
+
+/* ---------- COUNTDOWN ---------- */
 .countdown{
   display:flex;
   justify-content:center;
@@ -124,7 +146,7 @@ h2{
   font-size:.8rem;
 }
 
-/* NAV DOTS */
+/* ---------- NAV DOTS ---------- */
 .nav{
   position:fixed;
   bottom:20px;
@@ -132,6 +154,7 @@ h2{
   transform:translateX(-50%);
   display:flex;
   gap:10px;
+  z-index:10;
 }
 
 .dot{
@@ -141,77 +164,114 @@ h2{
   border-radius:50%;
   opacity:.4;
 }
+
 .dot.active{opacity:1}
 
-/* ARROWS */
+/* ---------- ARROWS ---------- */
 .arrows{
   position:fixed;
-  top:50%;
+  bottom:70px;
   width:100%;
   display:flex;
   justify-content:space-between;
-  padding:0 15px;
+  padding:0 25px;
+  z-index:10;
 }
 
 .arrows button{
-  background:rgba(255,255,255,.85);
+  background:rgba(255,255,255,.9);
   border:none;
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   font-size:22px;
   color:#b79b7a;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
 }
 
-/* LANG */
+/* ---------- LANGUAGE ---------- */
 .lang-switch{
   position:fixed;
   top:20px;
   left:20px;
   display:flex;
   gap:6px;
-  z-index:10;
+  z-index:20;
 }
 
 .lang-switch button{
-  background:#fff;
+  background:rgba(255,255,255,.9);
   border:1px solid #d8c7b2;
   border-radius:20px;
   padding:6px 12px;
+  font-size:.75rem;
 }
-.lang-switch .active{
+
+.lang-switch button.active{
   background:#b79b7a;
   color:#fff;
+}
+
+/* ---------- MUSIC ---------- */
+#musicBtn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#b79b7a;
+  color:#fff;
+  border:none;
+  border-radius:50%;
+  width:46px;
+  height:46px;
+  font-size:18px;
+  z-index:20;
+}
+
+#volumeControl{
+  position:fixed;
+  top:75px;
+  right:22px;
+  width:80px;
+  z-index:20;
 }
 </style>
 </head>
 
 <body>
 
+<!-- IDIOMA -->
 <div class="lang-switch">
   <button data-lang="es" class="active">ES</button>
   <button data-lang="en">EN</button>
 </div>
 
+<!-- MUSICA -->
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn">♪</button>
+<input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.5">
+
+<!-- SLIDER -->
+<div class="slider-wrapper">
 <div class="slider" id="slider">
 
-<!-- SLIDE 1 -->
 <section>
   <div class="card">
     <div class="photo"></div>
-    <div class="subtitle" data-es="Nos casamos" data-en="We are getting married">Nos casamos</div>
+    <div class="subtitle" data-es="Nos casamos" data-en="We're getting married">Nos casamos</div>
     <div class="names">Marcus & Laura</div>
     <div class="divider"></div>
-    <div class="romantic" data-es="El amor fue nuestro idioma en común" data-en="Love became our common language">
+    <p class="romantic" data-es="El amor fue nuestro idioma en común" data-en="Love became our common language">
       El amor fue nuestro idioma en común
-    </div>
-    <div class="romantic" data-es="10 · Enero · 2026" data-en="10 · January · 2026">
+    </p>
+    <p class="romantic" data-es="10 · Enero · 2026" data-en="10 · January · 2026">
       10 · Enero · 2026
-    </div>
+    </p>
   </div>
 </section>
 
-<!-- SLIDE 2 -->
 <section>
   <div class="card">
     <h2 data-es="Faltan" data-en="Countdown">Faltan</h2>
@@ -219,24 +279,28 @@ h2{
   </div>
 </section>
 
-<!-- SLIDE 3 -->
 <section>
   <div class="card">
     <h2 data-es="Ceremonia civil" data-en="Civil ceremony">Ceremonia civil</h2>
     <div class="divider"></div>
-    <p>Calle Corregidora 46<br>Atlaltahucan, Morelos</p>
-    <p>2:30 p.m.</p>
+    <p class="text">Calle Corregidora 46<br>Atlaltahucan, Morelos</p>
+    <p class="text">2:30 p.m.</p>
+    <a class="btn" href="https://maps.app.goo.gl/wvwoCVHcf98MsGAEA" target="_blank"
+       data-es="Ver ubicación" data-en="View location">Ver ubicación</a>
   </div>
 </section>
 
 </div>
+</div>
 
+<!-- DOTS -->
 <div class="nav">
   <div class="dot active"></div>
   <div class="dot"></div>
   <div class="dot"></div>
 </div>
 
+<!-- ARROWS -->
 <div class="arrows">
   <button id="prev">❮</button>
   <button id="next">❯</button>
@@ -252,18 +316,32 @@ function update(){
   dots.forEach((d,i)=>d.classList.toggle('active',i===index));
 }
 
-document.getElementById('prev').onclick=()=>{if(index>0){index--;update();}}
-document.getElementById('next').onclick=()=>{if(index<2){index++;update();}}
+/* TOUCH */
+let startX=0;
+document.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
+document.addEventListener('touchend',e=>{
+  const diff=startX-e.changedTouches[0].clientX;
+  if(diff>50 && index<2) index++;
+  if(diff<-50 && index>0) index--;
+  update();
+});
 
-const target=new Date('2026-01-10T17:00:00');
-setInterval(()=>{
-  const now=new Date();
-  const diff=target-now;
-  document.getElementById('countdown').innerHTML=
-  `<div class="time">${Math.floor(diff/86400000)}<br>Días</div>
-   <div class="time">${Math.floor(diff/3600000)%24}<br>Hrs</div>
-   <div class="time">${Math.floor(diff/60000)%60}<br>Min</div>`;
-},1000);
+/* ARROWS */
+document.getElementById('prev').onclick=()=>{if(index>0){index--;update();}};
+document.getElementById('next').onclick=()=>{if(index<2){index++;update();}};
+
+/* MUSIC */
+const music=document.getElementById('bgMusic');
+const btn=document.getElementById('musicBtn');
+const volume=document.getElementById('volumeControl');
+let playing=false;
+music.volume=.5;
+
+btn.onclick=()=>{
+  playing?music.pause():music.play();
+  playing=!playing;
+};
+volume.oninput=()=>music.volume=volume.value;
 
 /* LANG */
 document.querySelectorAll('.lang-switch button').forEach(b=>{
@@ -273,12 +351,24 @@ document.querySelectorAll('.lang-switch button').forEach(b=>{
     document.querySelectorAll('[data-es]').forEach(t=>{
       t.textContent=t.dataset[b.dataset.lang];
     });
-  }
+  };
 });
+
+/* COUNTDOWN */
+const target=new Date('2026-01-10T17:00:00');
+const cd=document.getElementById('countdown');
+setInterval(()=>{
+  const diff=target-new Date();
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff/3600000)%24;
+  const m=Math.floor(diff/60000)%60;
+  cd.innerHTML=`<div class="time">${d}<br>Días</div><div class="time">${h}<br>Hrs</div><div class="time">${m}<br>Min</div>`;
+},1000);
 </script>
 
 </body>
 </html>
+
 
 
 
