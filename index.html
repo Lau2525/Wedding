@@ -1,372 +1,310 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Invitación Digital de Boda</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Invitación Digital de Boda</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      /*background: #f6f2ee;
-      /*color: #4a4036;
-      overflow: hidden;*/
-      background:
-    linear-gradient(
-      rgba(246,242,238,0.85),
-      rgba(246,242,238,0.85)
-    ),
-    url("/img/fondo2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-    }
+body{
+  font-family:'Montserrat',sans-serif;
+  background:
+    linear-gradient(rgba(246,242,238,0.85),rgba(246,242,238,0.85)),
+    url("img/fondo2.jpg"); /* 🔧 RUTA RELATIVA */
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  overflow:hidden;
+}
 
-    .slider {
-      display: flex;
-      width: 500vw;
-      height: 100vh;
-      transition: transform 0.6s ease-in-out;
-    }
+.slider{
+  display:flex;
+  width:500vw;
+  height:100vh;
+  transition:transform .6s ease-in-out;
+}
 
-    section {
-      width: 100vw;
-      height: 100vh;
-      padding: 40px 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      animation: fade 0.8s ease;
-    }
+section{
+  width:100vw;
+  height:100vh;
+  padding:30px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
 
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+.card{
+  background:#fff;
+  max-width:420px;
+  width:100%;
+  padding:28px 22px;
+  border-radius:18px;
+  box-shadow:0 18px 40px rgba(0,0,0,.15);
+  position:relative;
+}
 
-    .card {
-      background: #fff;
-      max-width: 420px;
-      width: 100%;
-      padding: 35px 25px;
-      border-radius: 18px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.15);
-      position: relative;
-    }
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border:2px solid #d8c7b2;
+  border-radius:18px;
+  pointer-events:none;
+}
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 2px solid #d8c7b2;
-      border-radius: 18px;
-      pointer-events: none;
-    }
+.photo{
+  width:100%;
+  height:240px;
+  background:url("img/_TCP6006.jpg") center/cover no-repeat; /* 🔧 RUTA */
+  border-radius:12px;
+  margin-bottom:18px;
+}
 
-    .photo {
-      width: 100%;
-      /*height: 240px;*/
-      height:250px;
-      /*background: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e') center/cover no-repeat;*/
-      background: url("img/_TCP6006.jpg") center/cover no-repeat;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
+/* MOBILE AJUSTE SUAVE */
+@media (max-width:480px){
+  .photo{height:200px}
+  .card{padding:22px 18px}
+}
 
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 12px;
-    }
-
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.6rem;
-      color: #795226 }
-
-    .subtitle {
-      font-size: 0.9rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #b79b7a;
-      margin-bottom: 10px;
-    }
-
-    .divider {
-      width: 70px;
-      height: 1px;
-      background: #d8c7b2;
-      margin: 18px auto;
-    }
-
-    .text { font-size: 0.95rem; line-height: 1.6; }
-    /*.date { font-size: 1rem; margin-top: 10px; font-weight: 500; }*/
-
-.romantic{
-  font-family:'Great Vibes',cursive;
-  font-size:1.2rem;
-  color:#b79b7a;
-  margin-top:10px;
+h1,h2{
+  font-family:'Playfair Display',serif;
+  margin-bottom:10px;
 }
 
 .names{
   font-family:'Great Vibes',cursive;
   font-size:2rem;
   color:#795226;
-  margin-top:10px;
 }
 
-    .btn {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 12px 26px;
-      border-radius: 30px;
-      background: #b79b7a;
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
+.subtitle{
+  font-size:.85rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:#b79b7a;
+  margin-bottom:8px;
+}
 
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 15px;
-    }
+.divider{
+  width:70px;
+  height:1px;
+  background:#d8c7b2;
+  margin:14px auto;
+}
 
-    .time {
-      background: #f3ede7;
-      padding: 10px 12px;
-      border-radius: 10px;
-      font-size: 0.8rem;
-    }
+.romantic{
+  font-family:'Great Vibes',cursive;
+  font-size:1.2rem;
+  color:#b79b7a;
+  margin-top:8px;
+}
 
-    .nav {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-    }
+.text{font-size:.95rem;line-height:1.6}
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      background: #d8c7b2;
-      border-radius: 50%;
-      opacity: 0.4;
-    }
+.btn{
+  display:inline-block;
+  margin-top:14px;
+  padding:10px 24px;
+  border-radius:30px;
+  background:#b79b7a;
+  color:#fff;
+  text-decoration:none;
+}
 
-    .dot.active { opacity: 1; }
-    .arrows {
-      position: fixed;
-      top: 50%;
-      width: 100%;
-      display: none; /* ocultas por defecto (mobile) */
-      justify-content: space-between;
-      padding: 0 15px;
-      pointer-events: none;
-    }
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:12px;
+}
 
-    /* SOLO DESKTOP */
-    @media (min-width: 768px) {
-      .arrows {
-        display: flex;
-      }
-    }
+.time{
+  background:#f3ede7;
+  padding:10px 12px;
+  border-radius:10px;
+  font-size:.8rem;
+}
 
-    .arrows button {
-      pointer-events: auto;
-      background: rgba(255,255,255,0.85);
-      border: none;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      font-size: 22px;
-      color: #b79b7a;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    }
+/* DOTS */
+.nav{
+  position:fixed;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
+}
 
-    .arrows button:active { transform: scale(0.95); }
+.dot{
+  width:10px;
+  height:10px;
+  background:#d8c7b2;
+  border-radius:50%;
+  opacity:.4;
+}
+.dot.active{opacity:1}
 
-  .lang-switch {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 999;
-      display: flex;
-      gap: 6px;
-    }
+/* FLECHAS: AHORA TAMBIÉN EN MOBILE */
+.arrows{
+  position:fixed;
+  top:50%;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:0 12px;
+  pointer-events:none;
+}
 
-    .lang-switch button {
-      background: rgba(255,255,255,0.9);
-      border: 1px solid #d8c7b2;
-      border-radius: 20px;
-      padding: 6px 12px;
-      font-size: 0.75rem;
-      color: #4a4036;
-    }
+.arrows button{
+  pointer-events:auto;
+  background:rgba(255,255,255,.85);
+  border:none;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  font-size:20px;
+  color:#b79b7a;
+}
 
-    .lang-switch button.active {
-      background: #b79b7a;
-      color: #fff;
-      border-color: #b79b7a;
-    }
+/* IDIOMAS */
+.lang-switch{
+  position:fixed;
+  top:15px;
+  left:15px;
+  z-index:999;
+  display:flex;
+  gap:6px;
+}
 
+.lang-switch button{
+  background:#fff;
+  border:1px solid #d8c7b2;
+  border-radius:20px;
+  padding:6px 12px;
+  font-size:.75rem;
+}
+
+.lang-switch button.active{
+  background:#b79b7a;
+  color:#fff;
+}
 </style>
 </head>
+
 <body>
 
-<!-- SWITCH IDIOMA -->
 <div class="lang-switch">
   <button data-lang="es" class="active">ES</button>
   <button data-lang="en">EN</button>
 </div>
 
-<!-- MUSICA -->
 <audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/audio/2022/10/10/audio_4e9b7c2b50.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicBtn" style="position:fixed;top:20px;right:20px;z-index:999;background:#b79b7a;color:#fff;border:none;border-radius:50%;width:48px;height:48px;font-size:18px;">♪</button>
-<input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.5" style="position:fixed;top:78px;right:22px;z-index:999;width:80px;">
+<button id="musicBtn" style="position:fixed;top:15px;right:15px;z-index:999;width:44px;height:44px;border-radius:50%;border:none;background:#b79b7a;color:#fff;font-size:18px">♪</button>
 
 <div class="slider" id="slider">
 
-
-  <section>
+<section>
   <div class="card">
     <div class="photo"></div>
     <div class="subtitle" data-es="Nos casamos" data-en="We are getting married">Nos casamos</div>
     <h1 class="names">Marcus & Laura</h1>
     <div class="divider"></div>
-<p class="romantic" data-es="El amor fue nuestro idioma en común" data-en="Love became our common language">El amor fue nuestro idioma en común</p>          
-<p class="romantic" data-es="10 · Enero · 2026" data-en="10 · January · 2026">10 · Enero · 2026</p>
+    <p class="romantic" data-es="El amor fue nuestro idioma en común" data-en="Love became our common language">
+      El amor fue nuestro idioma en común
+    </p>
+    <p class="romantic" data-es="10 · Enero · 2026" data-en="10 · January · 2026">
+      10 · Enero · 2026
+    </p>
   </div>
 </section>
 
-  <section>
-    <div class="card">
-      <h2><span data-es="Faltan" data-en="Countdown">Faltan</span></h2>
-      <div class="countdown" id="countdown"></div>
-    </div>
-  </section>
+<section>
+  <div class="card">
+    <h2 data-es="Faltan" data-en="Countdown">Faltan</h2>
+    <div class="countdown" id="countdown"></div>
+  </div>
+</section>
 
-  <section>
-    <div class="card">
-      <h2><span data-es="Ceremonia civil" data-en="Civil ceremony">Ceremonia civil</span></h2>
-      <div class="divider"></div>
-      <p class="text">Calle Corregidora 46<br>Atlaltahucan, Morelos</p>
-      <p class="date">2:30 p.m.</p>
-      <a class="btn" href="https://maps.app.goo.gl/wvwoCVHcf98MsGAEA" target="_blank" data-es="Ver ubicación" data-en="View location">Ver ubicación</a>
-    </div>
-  </section>
-
+<section>
+  <div class="card">
+    <h2 data-es="Ceremonia civil" data-en="Civil ceremony">Ceremonia civil</h2>
+    <div class="divider"></div>
+    <p class="text">Calle Corregidora 46<br>Atlaltahucan, Morelos</p>
+    <p class="text">2:30 p.m.</p>
+    <a class="btn" href="https://maps.app.goo.gl/wvwoCVHcf98MsGAEA" target="_blank"
+       data-es="Ver ubicación" data-en="View location">Ver ubicación</a>
+  </div>
+</section>
 
 </div>
 
-<!-- INDICADORES -->
 <div class="nav">
   <div class="dot active"></div>
   <div class="dot"></div>
   <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
 </div>
 
-<!-- BOTONES FLECHA -->
 <div class="arrows">
-  <button id="prev" aria-label="Anterior">❮</button>
-  <button id="next" aria-label="Siguiente">❯</button>
-</div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
+  <button id="prev">❮</button>
+  <button id="next">❯</button>
 </div>
 
 <script>
-  /* SLIDE TOUCH */
-  let index = 0;
-  const slider = document.getElementById('slider');
-  const dots = document.querySelectorAll('.dot');
-  let startX = 0;
+let index=0;
+const slider=document.getElementById('slider');
+const dots=document.querySelectorAll('.dot');
+let startX=0;
 
-  document.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-  });
+function update(){
+  slider.style.transform=`translateX(-${index*100}vw)`;
+  dots.forEach((d,i)=>d.classList.toggle('active',i===index));
+}
 
-  document.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (diff > 50 && index < 4) index++;
-    if (diff < -50 && index > 0) index--;
-    slider.style.transform = `translateX(-${index * 100}vw)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === index));
-  });
+document.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
+document.addEventListener('touchend',e=>{
+  const diff=startX-e.changedTouches[0].clientX;
+  if(diff>50 && index<2) index++;
+  if(diff<-50 && index>0) index--;
+  update();
+});
 
-  /* MUSICA */
-  const music = document.getElementById('bgMusic');
-  const btn = document.getElementById('musicBtn');
-  const volume = document.getElementById('volumeControl');
-  let playing = false;
-  music.volume = 0.5;
+prev.onclick=()=>{if(index>0){index--;update();}};
+next.onclick=()=>{if(index<2){index++;update();}};
 
-  btn.addEventListener('click', () => {
-    if (!playing) music.play(); else music.pause();
-    playing = !playing;
-  });
+const music=document.getElementById('bgMusic');
+const btn=document.getElementById('musicBtn');
+let playing=false;
+btn.onclick=()=>{playing?music.pause():music.play();playing=!playing;};
 
-  volume.addEventListener('input', () => music.volume = volume.value);
-
-    /* BOTONES FLECHA */
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
-
-  function updateSlide() {
-    slider.style.transform = `translateX(-${index * 100}vw)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === index));
-  }
-
-  prev.addEventListener('click', () => {
-    if (index > 0) index--;
-    updateSlide();
-  });
-
-  next.addEventListener('click', () => {
-    if (index < 2) index++;
-    updateSlide();
-  });
-
-    /* IDIOMAS */
-  const langBtns = document.querySelectorAll('.lang-switch button');
-  const texts = document.querySelectorAll('[data-es]');
-
-  langBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      langBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const lang = btn.dataset.lang;
-      texts.forEach(el => el.textContent = el.dataset[lang]);
+document.querySelectorAll('.lang-switch button').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.lang-switch button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      el.textContent=el.dataset[b.dataset.lang];
     });
-  });
+  };
+});
 
-  /* COUNTDOWN */
-  const target = new Date('2026-01-10T17:00:00');
-  const cd = document.getElementById('countdown');
-
-  setInterval(() => {
-    const now = new Date();
-    const diff = target - now;
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((diff / (1000 * 60)) % 60);
-    cd.innerHTML = `<div class='time'>${d}<br>Días</div><div class='time'>${h}<br>Hrs</div><div class='time'>${m}<br>Min</div>`;
-  }, 1000);
+const target=new Date('2026-01-10T17:00:00');
+setInterval(()=>{
+  const diff=target-new Date();
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff/3600000)%24;
+  const m=Math.floor(diff/60000)%60;
+  countdown.innerHTML=`<div class="time">${d}<br>Días</div><div class="time">${h}<br>Hrs</div><div class="time">${m}<br>Min</div>`;
+},1000);
 </script>
 
 </body>
 </html>
+
