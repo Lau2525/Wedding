@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Invitación Digital de Boda</title>
+<title>Te invitamos a nuestra Boda Civil</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
@@ -34,7 +34,7 @@ body{
 
 .slider{
   display:flex;
-  width:300vw;
+  width:400vw;
   transition:transform .6s ease-in-out;
 }
 
@@ -48,6 +48,17 @@ section{
   align-items:flex-start;
   padding:90px 20px 130px;
 }
+
+/* Centrado real para todas las slides */
+section:nth-child(1),
+section:nth-child(2),
+section:nth-child(3),
+section:nth-child(4){
+  align-items:center;
+  padding:40px 20px;
+}
+
+
 
 /* ---------- CARD ---------- */
 .card{
@@ -90,7 +101,7 @@ section{
 
 .names{
   font-family:'Great Vibes',cursive;
-  font-size:2.2rem;
+  font-size:2.1rem;
   color:#795226;
 }
 
@@ -103,7 +114,7 @@ section{
 
 .romantic{
   font-family:'Great Vibes',cursive;
-  font-size:1.15rem;
+  font-size:1.8rem;
   color:#b79b7a;
   margin-top:10px;
 }
@@ -234,6 +245,49 @@ h2{
   width:80px;
   z-index:20;
 }
+
+/* ---------- VOLUME SLIDER COLOR ---------- */
+input[type="range"]{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 4px;
+  background: #d8c7b2; /* línea */
+  border-radius: 5px;
+  outline: none;
+}
+
+/* CIRCULITO (thumb) */
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #b79b7a; /* color del circulo */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb{
+  width: 16px;
+  height: 16px;
+  background: #b79b7a;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/*Lovely-text*/
+.lovely-text{
+  font-family:'Great Vibes',cursive;
+  font-size:1.4rem;
+  color:#b79b7a;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 </style>
 </head>
 
@@ -261,10 +315,11 @@ h2{
   <div class="card">
     <div class="photo"></div>
     <div class="subtitle" data-es="Nos casamos" data-en="We're getting married">Nos casamos</div>
+     <div class="divider"></div>
     <div class="names">Marcus & Laura</div>
     <div class="divider"></div>
-    <p class="romantic" data-es="El amor fue nuestro idioma en común" data-en="Love became our common language">
-      El amor fue nuestro idioma en común
+    <p class="romantic" data-es="El amor se volvió nuestro idioma en común" data-en="Love became our common language">
+      El amor se volvió nuestro idioma en común
     </p>
     <p class="romantic" data-es="10 · Enero · 2026" data-en="10 · January · 2026">
       10 · Enero · 2026
@@ -280,10 +335,52 @@ h2{
 </section>
 
 <section>
+<div class="card">
+
+  <!-- PLANTILLAS OCULTAS -->
+  <template id="romantic-es">
+    Con el corazón lleno de gratitud,<br>
+    agradecemos a Dios, a nuestros padres y a la vida<br>
+    por habernos permitido encontrarnos.<br><br>
+
+    Desde lugares distantes, nuestros caminos se cruzaron<br>
+    y hoy decidimos caminar juntos,<br>
+    celebrando esta unión como una bendición.<br><br>
+
+    <strong>
+      Con mucha alegría, le invitamos a celebrar con nosotros<br>
+      este momento tan especial.
+    </strong>
+  </template>
+
+  <template id="romantic-en">
+    With hearts full of gratitude,<br>
+    we thank God, our parents, and life<br>
+    for allowing us to find each other.<br><br>
+
+    From distant places, our paths crossed<br>
+    and today we choose to walk together,<br>
+    celebrating this union as a blessing.<br><br>
+
+    <strong>
+      With great joy, we invite you to celebrate with us<br>
+      this very special moment.
+    </strong>
+  </template>
+
+  <!-- TEXTO VISIBLE -->
+  <p class="lovely-text" id="romanticText"></p>
+
+</div>
+
+</section>
+
+
+<section>
   <div class="card">
     <h2 data-es="Ceremonia civil" data-en="Civil ceremony">Ceremonia civil</h2>
     <div class="divider"></div>
-    <p class="text">Calle Corregidora 46<br>Atlaltahucan, Morelos</p>
+    <p class="text">Calle Corregidora 46<br>Atlatlahucan, Morelos</p>
     <p class="text">2:30 p.m.</p>
     <a class="btn" href="https://maps.app.goo.gl/wvwoCVHcf98MsGAEA" target="_blank"
        data-es="Ver ubicación" data-en="View location">Ver ubicación</a>
@@ -296,6 +393,7 @@ h2{
 <!-- DOTS -->
 <div class="nav">
   <div class="dot active"></div>
+  <div class="dot"></div>
   <div class="dot"></div>
   <div class="dot"></div>
 </div>
@@ -321,14 +419,14 @@ let startX=0;
 document.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
 document.addEventListener('touchend',e=>{
   const diff=startX-e.changedTouches[0].clientX;
-  if(diff>50 && index<2) index++;
+  if(diff>50 && index<3) index++;
   if(diff<-50 && index>0) index--;
   update();
 });
 
 /* ARROWS */
 document.getElementById('prev').onclick=()=>{if(index>0){index--;update();}};
-document.getElementById('next').onclick=()=>{if(index<2){index++;update();}};
+document.getElementById('next').onclick=()=>{if(index<3){index++;update();}};
 
 /* MUSIC */
 const music=document.getElementById('bgMusic');
@@ -344,7 +442,7 @@ btn.onclick=()=>{
 volume.oninput=()=>music.volume=volume.value;
 
 /* LANG */
-document.querySelectorAll('.lang-switch button').forEach(b=>{
+/*document.querySelectorAll('.lang-switch button').forEach(b=>{
   b.onclick=()=>{
     document.querySelectorAll('.lang-switch button').forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
@@ -352,7 +450,29 @@ document.querySelectorAll('.lang-switch button').forEach(b=>{
       t.textContent=t.dataset[b.dataset.lang];
     });
   };
+});*/
+
+/* LANG */
+const romanticText = document.getElementById('romanticText');
+const tplES = document.getElementById('romantic-es');
+const tplEN = document.getElementById('romantic-en');
+
+document.querySelectorAll('.lang-switch button').forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll('.lang-switch button')
+      .forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+
+    romanticText.innerHTML =
+      b.dataset.lang === 'en'
+        ? tplEN.innerHTML
+        : tplES.innerHTML;
+  };
 });
+
+/* idioma inicial */
+romanticText.innerHTML = tplES.innerHTML;
+
 
 /* COUNTDOWN */
 const target=new Date('2026-01-10T17:00:00');

@@ -114,7 +114,7 @@ section:nth-child(4){
 
 .romantic{
   font-family:'Great Vibes',cursive;
-  font-size:1.8rem;
+  font-size:1.6rem;
   color:#b79b7a;
   margin-top:10px;
 }
@@ -459,19 +459,32 @@ const tplEN = document.getElementById('romantic-en');
 
 document.querySelectorAll('.lang-switch button').forEach(b=>{
   b.onclick = ()=>{
+    // botones activos
     document.querySelectorAll('.lang-switch button')
       .forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
 
-    romanticText.innerHTML =
-      b.dataset.lang === 'en'
+    const lang = b.dataset.lang;
+
+    /* 1️⃣ TEXTOS SIMPLES (slides 1, 2 y 4) */
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      el.textContent = el.dataset[lang];
+    });
+
+    /* 2️⃣ TEXTO ROMÁNTICO (slide 3, con HTML) */
+    if (romanticText) {
+      romanticText.innerHTML = lang === 'en'
         ? tplEN.innerHTML
         : tplES.innerHTML;
+    }
   };
 });
 
-/* idioma inicial */
-romanticText.innerHTML = tplES.innerHTML;
+/* idioma inicial (ES) */
+if (romanticText && tplES) {
+  romanticText.innerHTML = tplES.innerHTML;
+}
+
 
 
 /* COUNTDOWN */
